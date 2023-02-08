@@ -14,11 +14,6 @@ public class MovieManagerTest {
         Assertions.assertSame(expected, actual);
     }
 
-
-
-
-
-
     MovieManager manager = new MovieManager();
 
     @Test
@@ -62,7 +57,7 @@ public class MovieManagerTest {
     }
 
     @Test
-    public void outputReverseOrder() {
+    public void outputReverseOrderTest() {
         manager.addMovie("First");
         manager.addMovie("Second");
         manager.addMovie("Third");
@@ -80,7 +75,7 @@ public class MovieManagerTest {
     }
 
     @Test
-    public void outputInReverseOrderLessThanTheLimit() {
+    public void outputInReverseOrderLessThanLimitTest() {
         manager.addMovie("First");
         manager.addMovie("Second");
         manager.addMovie("Third");
@@ -88,6 +83,25 @@ public class MovieManagerTest {
         manager.addMovie("Fifth");
 
         String[] expected = {"Fifth", "Fourth", "Third", "Second", "First"};
+        String[] actual = manager.findLastMovie();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void outputInReverseOrderMoreThanLimitTest() {
+        manager.addMovie("First");
+        manager.addMovie("Second");
+        manager.addMovie("Third");
+        manager.addMovie("Fourth");
+        manager.addMovie("Fifth");
+        manager.addMovie("Sixth");
+        manager.addMovie("Seventh");
+        manager.addMovie("Eighth");
+        manager.addMovie("Ninth");
+        manager.addMovie("Tenth");
+        manager.addMovie("Eleventh");
+        String[] expected = {"Eleventh", "Tenth", "Ninth", "Eighth", "Seventh", "Sixth", "Fifth", "Fourth", "Third", "Second"};
         String[] actual = manager.findLastMovie();
 
         Assertions.assertArrayEquals(expected, actual);
